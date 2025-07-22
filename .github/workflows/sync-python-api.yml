@@ -6,7 +6,6 @@ on:
 jobs:
   checkout-python-api-repo:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout current repo
         uses: actions/checkout@v4
@@ -15,10 +14,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: Esri/arcgis-python-api
-          path: /samples
+          path: ${{ github.event.inputs.target_path }}
 
-      - name: Access files from current repository
+      - name: Access file from current repository
         run: |
-          echo "Cloned repository: arcgis-python-api"
-          echo "Into directory: /samples"
-          cat "samples/02_power_users_developers/using_geocoding_geometry.ipynb"
+          echo "Accessing the specific file: samples/02_power_users_developers/using_geocoding_geometry.ipynb"
+          cat "${{ github.event.inputs.target_path }}/samples/02_power_users_developers/using_geocoding_geometry.ipynb"
