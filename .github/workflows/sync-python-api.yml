@@ -19,4 +19,4 @@ jobs:
       - name: Access file from current repository
         run: |
           echo "Accessing the specific file: samples/02_power_users_developers/using_geocoding_geometry.ipynb"
-          cat "${{ github.event.inputs.target_path }}/samples/02_power_users_developers/using_geocoding_geometry.ipynb"
+          cp "${{ github.event.inputs.target_path }}/samples/02_power_users_developers/" . 
